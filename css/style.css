@@ -15,7 +15,7 @@ body{
 }
 
 p{
-	font-size: .95em;
+	font-size: .9em;
 }
 
 h1{
@@ -42,6 +42,7 @@ h4{
 label {
 	display:inline-block;
 	margin-top: 1em;
+	width: 100%;
 }
 
 fieldset{
@@ -51,6 +52,7 @@ fieldset{
 input[id=zip-code]{
 	max-width: 50%;
 }
+
 /*  Combinators  */
 
 input[type=checkbox], input[type=radio]{
@@ -79,30 +81,40 @@ select {
 	z-index:1;
 }
 
-input[type=email], input[type=text], input[type=tel], input[type=submit]{
+textarea{
+	margin-top: .7em;
+}
+
+input[type=email], input[type=text], input[type=tel], textarea{
 	display: block;
 	border:3px solid rgba(231,230,232,1);
 	width:100%;
 	padding: .7em;
 	background: rgba(231,230,232,1);
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
 	border-radius: 5px;		
 }
 
+input[type=submit], input[type=reset]{
+	display: block;
+	border:3px solid rgba(231,230,232,1);
+	padding: .7em;
+	background: rgba(231,230,232,1);
+	width:100%;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border-radius: 5px;		
+}
 
 fieldset legend{
 	font-size: 1.5em;
-	padding-top: 1em;
-	
-}
-
-.pull-down{
-	border-radius: 3px;
+	padding-top: 1em;	
 }
 
 .pull-down, input[type=checkbox] + label::before, input[type=radio] + label::before{
 	background: rgba(231,230,232,1);	
 }
-
 
 
 /* ================================= 
@@ -118,7 +130,7 @@ fieldset legend{
 }
 
 .banner{
-	background: #836395;
+	background: rgba(131,99,149,1);
 	color: #EDEBED;
 	padding: .1em 0;
 }
@@ -134,8 +146,6 @@ fieldset legend{
 	font-weight:300;
 	color:#EDEBED;
 }
-/*  DRY Styles  */
-
 
 /*  Combinators  */
 
@@ -153,14 +163,16 @@ select, .pull-down{
 	padding-bottom: 2em;
 }
 
-input[type=text]:focus, input[type=email]:focus, input[type=tel]:focus, input[type=submit]:focus, select:focus{
+input[type=text]:focus, input[type=email]:focus, input[type=tel]:focus, input[type=submit]:focus, input[type=reset]:focus, select:focus, textarea:focus{
 	outline: none;
 	border: 3px solid rgba(52,6,78,1);
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
 	border-radius: 5px;
 }
 
 
-/*  Form  */
+/*  Form   */
 
 /*----- Placehoder Hack -----*/
 input::-webkit-input-placeholder{
@@ -189,8 +201,12 @@ input:-ms-input-placeholder {
 
 
 /*----- Pull-down Menu Style -----*/
+
 .pull-down{
 	z-index:2;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
 }
 
 .pull-down:after{
@@ -232,6 +248,8 @@ input[type=checkbox] + label::before{
 	margin-right: 12px;
 	width: 20px;
 	height: 20px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
 	border-radius: 5px;
 	border: 2px solid rgba(52,6,78,0);
 	vertical-align: middle;
@@ -268,6 +286,8 @@ input[type=radio] + label::before{
 	margin-right: 12px;
 	width: 20px;
 	height: 20px;
+	-moz-border-radius: 50%;
+	-webkit-border-radius: 50%;
 	border-radius: 50%;
 	border: 2px solid rgba(52,6,78,0);
 	vertical-align: middle;
@@ -284,25 +304,45 @@ input[type=radio]:checked + label::after{
 	left: 6px;
 	width: 12px;
 	height: 12px;
+	-moz-border-radius: 50%;
+	-webkit-border-radius: 50%;
 	border-radius: 50%;
 	background: rgba(52,6,78,1);
 }
 
-/*----- Submit Button Style -----*/
+/*----- Submit and Reset Button Styles -----*/
+
+input[type=submit], input[type=reset]{
+	margin-top: 1.5em;
+}
 
 input[type=submit]{
-	margin-top: 1.5em;
 	background: coral;
 	border-color: coral;
-	color: #f4f4f4;
+	color: #f4f4f4;	
 }
+
 input[type=submit]:focus{
-	margin-top: 1.5em;
 	background: #E23C00;
 	border-color: #E23C00;
 	color: #f4f4f4;
 }
 
+input[type=reset]{
+	background: #836395;
+	border-color: #836395;
+	color: #f4f4f4;	
+}
+
+input[type=reset]:focus{
+	background: #34064E;
+	border-color: #34064E;
+	color: #f4f4f4;
+}
+
+.buttons{
+	padding: 0 1em;
+}
 
 /* ================================= 
   Page Elements
@@ -310,11 +350,15 @@ input[type=submit]:focus{
 
 .main-header p{
 	margin-bottom: 2em;
+	padding-top:0;
+	margin-top:.5em;
 }
 
 .main-header h2{
-	margin-top: 2em;}
-
+	margin-top: 2em;
+	padding-bottom:0;
+	margin-bottom:0;
+}
 
 .main-header p, .main-header h2, .separator, .separator-2{
 	margin-left: 1em;
@@ -342,6 +386,28 @@ input[type=submit]:focus{
   Media Queries
 ==================================== */
 
-@media (min-width:759){
+@media (min-width:759px){
 	
+	fieldset[class=primary] label, input[type=text], input[type=email], input[type=tel], .pull-down, textarea{
+		display: inline-block;
+	}
+	
+	input[id=zip-code]{
+		width: 190px !important;
+	}
+	
+	fieldset[class=primary] label{
+		width: 150px;
+	}
+	
+	label[id=topics]{
+	}
+	
+	input[type=text], input[type=email], input[type=tel], select, .pull-down{
+		width: 464px;		
+	}
+	
+	.row-container{
+		margin-top: 1em;
+	}
 }
