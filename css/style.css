@@ -72,7 +72,8 @@ select {
 	transition: all .5s;
 }
 div.pull-down{
-	border: 3px solid rgba(52,6,78,0);	
+	border: 3px solid rgba(52,6,78,0);
+	transition: all .5s;	
 }
 div.pull-down:hover{
 	border: 3px solid rgba(52,6,78,1);	
